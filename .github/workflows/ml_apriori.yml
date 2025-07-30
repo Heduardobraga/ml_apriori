@@ -14,6 +14,9 @@ jobs:
     - name: Fazer checkout do código
       uses: actions/checkout@v3
 
+    - name: Criar arquivo access_token.json a partir do Secret
+      run: echo '${{ secrets.ACCESS_TOKEN_JSON }}' > access_token.json
+
     - name: Configurar Python 3.11
       uses: actions/setup-python@v4
       with:
@@ -25,6 +28,4 @@ jobs:
         pip install requests python-dateutil
 
     - name: Executar script
-      env:
-        ACCESS_TOKEN_JSON: ${{ secrets.ACCESS_TOKEN_JSON }}
       run: python whats_apriori.py
