@@ -25,4 +25,6 @@ jobs:
         pip install requests python-dateutil
 
     - name: Executar script
+      env:
+        ACCESS_TOKEN_JSON: ${{ secrets.ACCESS_TOKEN_JSON }}
       run: python whats_apriori.py
